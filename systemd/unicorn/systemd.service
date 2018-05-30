@@ -1,0 +1,17 @@
+### BEGIN INIT INFO
+### END INIT INFO
+
+[Unit]
+Description=Unicorn for {{APP_NAME}} app
+After=network.target
+
+[Service]
+Type=forking
+PIDFile={{PID_FILE_PATH}}
+ExecStart={{START_CMD}}
+ExecReload=/bin/kill -s USR2 $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

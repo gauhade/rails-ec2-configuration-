@@ -1,0 +1,17 @@
+### BEGIN INIT INFO
+### END INIT INFO
+
+[Unit]
+Description=Puma for {{APP_NAME}} app
+After=network.target
+
+[Service]
+Type=forking
+PIDFile={{PID_FILE_PATH}}
+ExecStart={{START_CMD}}
+ExecStop={{STOP_CMD}}
+ExecReload={{RESTART_CMD}}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

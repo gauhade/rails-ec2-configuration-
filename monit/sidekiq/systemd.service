@@ -1,0 +1,17 @@
+### BEGIN INIT INFO
+### END INIT INFO
+
+[Unit]
+Description=Sidekiq for {{APP_NAME}} app
+After=network.target
+
+[Service]
+Type=forking
+PIDFile={{SIDEKIQ_PID}}
+ExecStart={{START_CMD}}
+ExecStop={{STOP_CMD}}
+ExecReload={{RESTART_CMD}}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
